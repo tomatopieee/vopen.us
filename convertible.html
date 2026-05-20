@@ -102,6 +102,13 @@
     .cta-band{flex-direction:column;text-align:center;padding:40px 20px;}
     footer{flex-direction:column;text-align:center;}
   }
+.hamburger{display:none;background:none;border:none;color:var(--white);font-size:24px;cursor:pointer;padding:8px;}
+.mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(8,11,8,0.98);border-bottom:1px solid var(--border);z-index:99;flex-direction:column;padding:20px 24px;gap:0;}
+.mobile-menu a{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:2px;text-transform:uppercase;color:var(--steel);text-decoration:none;padding:14px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a:hover{color:var(--green);}
+.mobile-menu .mobile-cta{color:var(--green);margin-top:8px;border-bottom:none;}
+.mobile-menu.open{display:flex;}
+@media(max-width:900px){.hamburger{display:block;}}
 </style>
 </head>
 <body>
@@ -117,6 +124,15 @@
   </ul>
   <a href="index.html#contact" class="nav-cta">Get a Quote</a>
 </nav>
+  <button class="hamburger" onclick="toggleMenu()" id="hamburger">☰</button>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="products.html">Products</a>
+  <a href="index.html#physics">Technology</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="index.html#contact" class="mobile-cta">Get a Quote</a>
+</div>
 
 <!-- HERO -->
 <div class="page-hero">
@@ -246,6 +262,11 @@
 <script>
   const obs=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:0.08});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+</script>
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
 </script>
 </body>
 </html>
